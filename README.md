@@ -1,6 +1,6 @@
 # 🏛️ UKDC Virtual Campus Tour
 
-> Jelajahi kampus Universitas Klabat secara interaktif — temui NPC, eksplorasi gedung, dan kenali fasilitas kampus dalam lingkungan 3D real-time.
+> Jelajahi kampus Universitas Katolik Darma Cendika secara interaktif — temui NPC, eksplorasi gedung, dan kenali fasilitas kampus dalam lingkungan 3D real-time.
 
 ![Unreal Engine 5](https://img.shields.io/badge/Unreal%20Engine-5-black?style=flat-square&logo=unrealengine)
 ![Platform](https://img.shields.io/badge/Platform-Windows-blue?style=flat-square&logo=windows)
@@ -90,5 +90,5 @@ UKDC Virtual Campus Tour adalah aplikasi tur kampus interaktif berbasis game yan
 ---
 
 <p align="center">
-  Universitas Klabat © 2026
+  Universitas Katolik Darma Cendika © 2026
 </p>
