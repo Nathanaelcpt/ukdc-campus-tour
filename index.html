@@ -7,51 +7,133 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: sans-serif; background: #0a0a0a; color: #f0f0f0; }
+
     .hero { max-width: 860px; margin: 0 auto; padding: 60px 24px 40px; text-align: center; }
     h1 { font-size: 2.4rem; font-weight: 700; margin-bottom: 12px; }
     .sub { font-size: 1.1rem; color: #aaa; margin-bottom: 32px; }
     .btn { display: inline-block; background: #E2C870; color: #0a0a0a;
            padding: 14px 36px; border-radius: 8px; text-decoration: none;
-           font-weight: 700; font-size: 1rem; margin-bottom: 40px; }
+           font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
     .btn:hover { background: #C9A030; }
+    #file-size { color: #aaa; font-size: 0.85rem; margin-bottom: 12px; }
+    .vc-note { font-size: 0.78rem; color: #666; margin-bottom: 40px; }
+    .vc-note a { color: #888; }
     img { width: 100%; border-radius: 10px; margin-bottom: 40px; }
-    .specs { max-width: 860px; margin: 0 auto; padding: 0 24px 60px; }
-    .specs h2 { font-size: 1.2rem; margin-bottom: 16px; color: #E2C870; }
-    .specs ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .specs li { background: #1a1a1a; padding: 10px 16px; border-radius: 6px;
-                font-size: 0.9rem; color: #ccc; }
+
+    .section { max-width: 860px; margin: 0 auto; padding: 0 24px 56px; }
+    .section h2 { font-size: 1.2rem; margin-bottom: 16px; color: #E2C870; }
+
+    /* Features */
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .feature-item { background: #1a1a1a; padding: 14px 16px; border-radius: 8px;
+                    font-size: 0.9rem; color: #ccc; display: flex; gap: 10px; align-items: flex-start; }
+    .feature-item .icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    /* Controls */
+    .controls { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; align-items: center; }
+    .key { display: inline-block; background: #1a1a1a; border: 1px solid #333;
+           padding: 4px 10px; border-radius: 5px; font-family: monospace;
+           font-size: 0.85rem; color: #E2C870; white-space: nowrap; }
+    .key-desc { font-size: 0.9rem; color: #ccc; padding: 4px 0; }
+
+    /* Install steps */
+    .steps { counter-reset: step; display: flex; flex-direction: column; gap: 10px; }
+    .step { background: #1a1a1a; padding: 14px 16px 14px 52px; border-radius: 8px;
+            font-size: 0.9rem; color: #ccc; position: relative; }
+    .step::before { counter-increment: step; content: counter(step);
+                    position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+                    background: #E2C870; color: #0a0a0a; width: 24px; height: 24px;
+                    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+                    font-weight: 700; font-size: 0.8rem; }
+
+    /* Specs */
+    .specs-grid { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .specs-grid li { background: #1a1a1a; padding: 10px 16px; border-radius: 6px;
+                     font-size: 0.9rem; color: #ccc; }
+
+    /* About */
+    .about-box { background: #111; border-left: 3px solid #E2C870;
+                 padding: 16px 20px; border-radius: 0 8px 8px 0;
+                 font-size: 0.9rem; color: #bbb; line-height: 1.7; }
+
     .footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #555; }
+
+    @media (max-width: 560px) {
+      .features, .specs-grid { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: auto 1fr; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- HERO -->
   <div class="hero">
     <h1>UKDC Virtual Campus Tour</h1>
     <p class="sub">Jelajahi kampus Universitas Katolik Darma Cendika secara virtual.<br>
-    Temui NPC, eksplorasi gedung, dan kenali fasilitas kampus.</p>
+      Temui NPC, eksplorasi gedung, dan kenali fasilitas kampus.</p>
     <a class="btn" href="https://github.com/Nathanaelcpt/ukdc-campus-tour/releases/download/v1.0.0/UKDCTourCampus_v1.0.zip">
-  Download (Windows)
-</a>
-<p id="file-size" style="color:#aaa; font-size:0.85rem; margin-top:-30px; margin-bottom:40px;">Mengambil ukuran file...</p>
-
-<script>
-  fetch("https://api.github.com/repos/Nathanaelcpt/ukdc-campus-tour/releases/tags/v1.0.0")
-    .then(r => r.json())
-    .then(data => {
-      const asset = data.assets.find(a => a.name === "UKDCTourCampus_v1.0.zip");
-      if (asset) {
-        const gb = (asset.size / 1024 / 1024 / 1024).toFixed(2);
-        document.getElementById("file-size").textContent = `Ukuran: ${gb} GB`;
-      }
-    })
-    .catch(() => {
-      document.getElementById("file-size").textContent = "";
-    });
-</script>
+      ⬇ Download (Windows)
+    </a>
+    <p id="file-size">Mengambil ukuran file...</p>
+    <p class="vc-note">
+      Jika aplikasi gagal launch, install
+      <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank">Visual C++ Redistributable</a>
+      terlebih dahulu.
+    </p>
     <img src="screenshot.png" alt="UKDC Campus Tour Screenshot">
   </div>
-  <div class="specs">
-    <h2>Minimum Spec</h2>
-    <ul>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <h2>Tentang Proyek</h2>
+    <div class="about-box">
+      UKDC Virtual Campus Tour adalah aplikasi tur kampus interaktif 3D yang dibangun dengan <strong style="color:#E2C870">Unreal Engine 5</strong>
+      sebagai proyek akhir S1 Ilmu Informatika Universitas Katolik Darma Cendika (UKDC) Surabaya.
+      Pengunjung dapat menjelajahi gedung kampus, berinteraksi dengan NPC yang merepresentasikan staf dan dosen,
+      serta mengenal fasilitas akademik secara imersif — tanpa harus datang ke kampus secara langsung.
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="section">
+    <h2>Fitur</h2>
+    <div class="features">
+      <div class="feature-item"><span class="icon">🎮</span> Third-person character controller dengan animasi idle, jalan, dan lari</div>
+      <div class="feature-item"><span class="icon">💬</span> Sistem dialog NPC gaya RPG dengan pilihan topik percakapan</div>
+      <div class="feature-item"><span class="icon">🛗</span> Elevator fungsional antar lantai dengan efek fade dan animasi pintu</div>
+      <div class="feature-item"><span class="icon">🧑‍🎓</span> Pilih karakter (pria/wanita) dan masukkan nama pemain</div>
+      <div class="feature-item"><span class="icon">🏛️</span> Eksplorasi gedung kampus UKDC secara bebas</div>
+      <div class="feature-item"><span class="icon">🖥️</span> Standalone — tidak perlu install Unreal Engine</div>
+    </div>
+  </div>
+
+  <!-- CARA INSTALL -->
+  <div class="section">
+    <h2>Cara Install & Main</h2>
+    <div class="steps">
+      <div class="step">Download file ZIP di atas</div>
+      <div class="step">Extract ke folder mana saja (pastikan ada ruang kosong ~3 GB)</div>
+      <div class="step">Buka folder hasil extract → jalankan <strong style="color:#E2C870">UKDCTourCampus.exe</strong></div>
+      <div class="step">Pilih karakter, masukkan nama, dan mulai eksplorasi!</div>
+    </div>
+  </div>
+
+  <!-- KONTROL -->
+  <div class="section">
+    <h2>Kontrol</h2>
+    <div class="controls">
+      <span class="key">W A S D</span><span class="key-desc">Gerakkan karakter</span>
+      <span class="key">Mouse</span><span class="key-desc">Putar kamera</span>
+      <span class="key">E</span><span class="key-desc">Interaksi / mulai dialog NPC</span>
+      <span class="key">Klik Kiri</span><span class="key-desc">Lanjut dialog / pilih opsi</span>
+      <span class="key">Shift</span><span class="key-desc">Lari</span>
+    </div>
+  </div>
+
+  <!-- SPECS -->
+  <div class="section">
+    <h2>Minimum Spesifikasi</h2>
+    <ul class="specs-grid">
       <li>OS: Windows 10/11 64-bit</li>
       <li>GPU: GTX 1060 / RX 580</li>
       <li>RAM: 8 GB</li>
@@ -60,6 +142,23 @@
       <li>Internet: Tidak diperlukan</li>
     </ul>
   </div>
+
   <footer class="footer">Universitas Katolik Darma Cendika © 2026</footer>
+
+  <script>
+    fetch("https://api.github.com/repos/Nathanaelcpt/ukdc-campus-tour/releases/tags/v1.0.0")
+      .then(r => r.json())
+      .then(data => {
+        const asset = data.assets.find(a => a.name === "UKDCTourCampus_v1.0.zip");
+        if (asset) {
+          const gb = (asset.size / 1024 / 1024 / 1024).toFixed(2);
+          document.getElementById("file-size").textContent = `Ukuran file: ${gb} GB`;
+        }
+      })
+      .catch(() => {
+        document.getElementById("file-size").textContent = "";
+      });
+  </script>
+
 </body>
 </html>
