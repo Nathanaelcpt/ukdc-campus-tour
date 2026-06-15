@@ -7,6 +7,7 @@
 ![Status](https://img.shields.io/badge/Status-Exhibition%20Build-gold?style=flat-square)
 ![Version](https://img.shields.io/badge/Version-1.0.0-green?style=flat-square)
 
+(https://nathanaelcpt.github.io/ukdc-campus-tour)
 ---
 
 ## 🎮 Tentang Proyek
