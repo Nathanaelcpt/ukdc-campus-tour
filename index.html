@@ -31,6 +31,22 @@
     <a class="btn" href="https://github.com/Nathanaelcpt/ukdc-campus-tour/releases/download/v1.0.0/UKDCTourCampus_v1.0.zip">
   Download (Windows)
 </a>
+<p id="file-size" style="color:#aaa; font-size:0.85rem; margin-top:-30px; margin-bottom:40px;">Mengambil ukuran file...</p>
+
+<script>
+  fetch("https://api.github.com/repos/Nathanaelcpt/ukdc-campus-tour/releases/tags/v1.0.0")
+    .then(r => r.json())
+    .then(data => {
+      const asset = data.assets.find(a => a.name === "UKDCTourCampus_v1.0.zip");
+      if (asset) {
+        const gb = (asset.size / 1024 / 1024 / 1024).toFixed(2);
+        document.getElementById("file-size").textContent = `Ukuran: ${gb} GB`;
+      }
+    })
+    .catch(() => {
+      document.getElementById("file-size").textContent = "";
+    });
+</script>
     <img src="screenshot.png" alt="UKDC Campus Tour Screenshot">
   </div>
   <div class="specs">
