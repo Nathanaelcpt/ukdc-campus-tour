@@ -146,10 +146,10 @@
   <footer class="footer">Universitas Katolik Darma Cendika © 2026</footer>
 
   <script>
-    fetch("https://api.github.com/repos/Nathanaelcpt/ukdc-campus-tour/releases/tags/v1.1.1")
+    fetch("https://api.github.com/repos/Nathanaelcpt/ukdc-campus-tour/releases/tags/v.1.1.1")
       .then(r => r.json())
       .then(data => {
-        const asset = data.assets.find(a => a.name === "UKDCTourCampus_v1.1.1.7z");
+        const asset = data.assets.find(a => a.name === "UKDCTourCampus_v.1.1.1.7z");
         if (asset) {
           const gb = (asset.size / 1024 / 1024 / 1024).toFixed(2);
           document.getElementById("file-size").textContent = `Ukuran file: ${gb} GB`;
