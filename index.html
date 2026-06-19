@@ -145,19 +145,35 @@
 
   <footer class="footer">Universitas Katolik Darma Cendika © 2026</footer>
 
-  <script>
-    fetch("https://api.github.com/repos/Nathanaelcpt/ukdc-campus-tour/releases/tags/v.1.1.1")
-      .then(r => r.json())
-      .then(data => {
-        const asset = data.assets.find(a => a.name === "UKDCTourCampus_v.1.1.1.7z");
-        if (asset) {
+ <script>
+    const CACHE_KEY = "ukdc_file_size";
+    const CACHE_TTL = 60 * 60 * 1000; // 1 jam
+
+    function setSizeText(text) {
+      document.getElementById("file-size").textContent = text;
+    }
+
+    const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
+    if (cached && Date.now() - cached.ts < CACHE_TTL) {
+      setSizeText(`Ukuran file: ${cached.gb} GB`);
+    } else {
+      fetch("https://api.github.com/repos/Nathanaelcpt/ukdc-campus-tour/releases/tags/v.1.1.1")
+        .then(r => {
+          if (!r.ok) throw new Error(`GitHub API ${r.status}`);
+          return r.json();
+        })
+        .then(data => {
+          const asset = data.assets.find(a => a.name === "UKDCTourCampus_v1.1.1.7z");
+          if (!asset) throw new Error("Asset not found in release");
           const gb = (asset.size / 1024 / 1024 / 1024).toFixed(2);
-          document.getElementById("file-size").textContent = `Ukuran file: ${gb} GB`;
-        }
-      })
-      .catch(() => {
-        document.getElementById("file-size").textContent = "";
-      });
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ gb, ts: Date.now() }));
+          setSizeText(`Ukuran file: ${gb} GB`);
+        })
+        .catch(err => {
+          console.error("File size fetch failed:", err);
+          setSizeText("");
+        });
+    }
   </script>
 
 </body>
