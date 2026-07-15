@@ -164,7 +164,7 @@
           return r.json();
         })
         .then(data => {
-          const asset = data.assets.find(a => a.name === "UKDCTourCampus_v1.1.1.7z");
+          const asset = data.assets.find(a => a.name === "UKDCTourCampus_v1.1.1.zip");
           if (!asset) throw new Error("Asset not found in release");
           const gb = (asset.size / 1024 / 1024 / 1024).toFixed(2);
           localStorage.setItem(CACHE_KEY, JSON.stringify({ gb, ts: Date.now() }));
