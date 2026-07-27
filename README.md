@@ -30,7 +30,7 @@ UKDC Virtual Campus Tour adalah aplikasi tur kampus interaktif berbasis game yan
 | Elevator system (teleport + camera fade) | ✅ Done |
 | Cinematic main menu | ✅ Done |
 | Character gender selection | ✅ Done |
-| Side-quest system | 🔄 Planned |
+| Side-quest system | ✅ Done |
 | VR (Oculus) support | 🔄 Planned |
 
 ---
