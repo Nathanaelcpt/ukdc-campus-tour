@@ -4,7 +4,7 @@
 
 ![Unreal Engine 5](https://img.shields.io/badge/Unreal%20Engine-5-black?style=flat-square&logo=unrealengine)
 ![Platform](https://img.shields.io/badge/Platform-Windows-blue?style=flat-square&logo=windows)
-![Status](https://img.shields.io/badge/Status-Exhibition%20Build-gold?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Production%20Build-green?style=flat-square)
 ![Version](https://img.shields.io/badge/Version-1.0.0-green?style=flat-square)
 
 (https://nathanaelcpt.github.io/ukdc-campus-tour)
