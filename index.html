@@ -72,7 +72,7 @@
     <h1>UKDC Virtual Campus Tour</h1>
     <p class="sub">Jelajahi kampus Universitas Katolik Darma Cendika secara virtual.<br>
       Temui NPC, eksplorasi gedung, dan kenali fasilitas kampus.</p>
-    <a class="btn" href="https://github.com/Nathanaelcpt/ukdc-campus-tour/releases/download/v.1.1.1/UKDCTourCampus_v1.1.1.7z"> 
+    <a class="btn" href="https://github.com/Nathanaelcpt/ukdc-campus-tour/releases/download/v.1.1.1.1/UKDCTourCampus_v1.1.1.1.zip"> 
       ⬇ Download (Windows)
     </a>
     <p id="file-size">Mengambil ukuran file...</p>
@@ -158,13 +158,13 @@
     if (cached && Date.now() - cached.ts < CACHE_TTL) {
       setSizeText(`Ukuran file: ${cached.gb} GB`);
     } else {
-      fetch("https://api.github.com/repos/Nathanaelcpt/ukdc-campus-tour/releases/tags/v.1.1.1")
+      fetch("https://api.github.com/repos/Nathanaelcpt/ukdc-campus-tour/releases/tags/v.1.1.1.1")
         .then(r => {
           if (!r.ok) throw new Error(`GitHub API ${r.status}`);
           return r.json();
         })
         .then(data => {
-          const asset = data.assets.find(a => a.name === "UKDCTourCampus_v1.1.1.zip");
+          const asset = data.assets.find(a => a.name === "UKDCTourCampus_v1.1.1.1.zip");
           if (!asset) throw new Error("Asset not found in release");
           const gb = (asset.size / 1024 / 1024 / 1024).toFixed(2);
           localStorage.setItem(CACHE_KEY, JSON.stringify({ gb, ts: Date.now() }));
