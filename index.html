@@ -16,6 +16,9 @@
            padding: 14px 36px; border-radius: 8px; text-decoration: none;
            font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
     .btn:hover { background: #C9A030; }
+    .btn-secondary { background: transparent; color: #E2C870;
+           border: 2px solid #E2C870; padding: 12px 34px; margin-left: 8px; }
+    .btn-secondary:hover { background: rgba(226,200,112,0.1); }
     #file-size { color: #aaa; font-size: 0.85rem; margin-bottom: 12px; }
     .vc-note { font-size: 0.78rem; color: #666; margin-bottom: 40px; }
     .vc-note a { color: #888; }
@@ -62,6 +65,7 @@
     @media (max-width: 560px) {
       .features, .specs-grid { grid-template-columns: 1fr; }
       .controls { grid-template-columns: auto 1fr; }
+      .btn-secondary { margin-left: 0; margin-top: 8px; }
     }
   </style>
 </head>
@@ -75,13 +79,16 @@
     <a class="btn" href="https://github.com/Nathanaelcpt/ukdc-campus-tour/releases/download/v.1.1.1.1/UKDCTourCampus_v1.1.1.1.zip"> 
       ⬇ Download (Windows)
     </a>
+    <a class="btn btn-secondary" href="https://share.streampixel.io/6a3a37dda30504f4f35e9701" target="_blank" rel="noopener">
+      🎮 Coba di Browser
+    </a>
     <p id="file-size">Mengambil ukuran file...</p>
     <p class="vc-note">
       Jika aplikasi gagal launch, install
       <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank">Visual C++ Redistributable</a>
       terlebih dahulu.
     </p>
-    <img src="screenshot.png" alt="UKDC Campus Tour Screenshot">
+    <img src="UKDC Campus Tour Screenshot.png" alt="UKDC Campus Tour Screenshot">
   </div>
 
   <!-- ABOUT -->
